@@ -1,0 +1,51 @@
+<div class="header">
+<form action="/add" method="post">
+<h2>add expenses for each categories</h2>
+ 
+<div class="success">
+{{message.success}}
+</div>
+<div class="success">
+{{message.success}}
+</div>
+
+<div class="field">
+<label for="username">Username</label>
+{{username}}
+</div>
+<div class="field">
+<label for="CategoryId">categories</label>
+<select name="CategoryId" id="categories">
+<option value="">select a categories </option>
+{{each categories}}
+<option value ="{{id}}">{{name}}</option>
+{{/each}}
+</select>
+</div>
+<div class="field">
+<label for="data">Date expenses on</label>
+<input class="qty" type="number" width="10" id="qty" nmae="qty">
+</div>
+<input type="submit">
+</form>
+<div>
+<h2>categories expeses</h2>
+<table>
+<tr>
+<th>Expenses by</th>
+<th>Qty</th>
+<th>categories</th>
+<th>expeses on</th>
+</tr>
+{{#each expense}}
+<tr>
+<td>{{firstname}}</td>
+<td>{{qty}}</td>
+<td>{{name}}</td>
+<td>{{day}}</td>
+</tr>
+{{/each}}
+</table
+</div>
+</div> 
+
