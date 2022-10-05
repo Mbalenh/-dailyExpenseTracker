@@ -1,4 +1,4 @@
- const express = require('express');
+const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const Greeting= require('./greet');
@@ -68,14 +68,14 @@ categories,
 
 
 
-app.get('/register', (req,res) =>{
+app.get('/register',async function (req,res){
 
 
 
 res.render('register');
 })
 
-app.post('/register', (req,res) =>{
+app.post('/register',async function (req,res){
 
    await dbFunction.register(firstname,lastname,email,password);
 
@@ -85,30 +85,30 @@ app.post('/register', (req,res) =>{
    const {email} =req.body;
 
    const findUserEmail ="select count (*) from users where email=$1";
-   const result = await.one(findUserEmail,email)
+   const result = await dbFunction.one(findUserEmail,email)
 
    if(firstname && lastname &&email && password){
 
 if(Number(results.count) !==0){
-req.flash('error',"user already exist";)
+req.flash('error',"user already exist")
 
 }else{
 await dbFunction.register(firstname,lastname,email,password);
-req.flash('success',"user have been added,please use code: $(code) to login in";)
+req.flash('success',"user have been added,please use code: $(code) to login in")
 
 }
 
 
    }else{
 
-req.flash('error',"Please add alll the field";)
+req.flash('error',"Please add alll the field")
    }
 
 res.redirect('/register');
 })
 
 
-app.get('/login', (req,res) =>{
+app.get('/login',async function (req,res){
 
 res.render('login');
 })
@@ -130,7 +130,7 @@ if(user){
   return
    }
 }else{
-  req.flash('error',"Please add alll the field";)
+  req.flash('error',"Please add alll the field")
 }
 
   res.render('login');
