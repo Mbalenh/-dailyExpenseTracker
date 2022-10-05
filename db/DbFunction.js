@@ -24,7 +24,8 @@ const expenses= async()=>{
 await db.ManyorNone('
 select * to_char(expenses_on,'day') as day
 from 
-join ex
+join expenses
+on 
 
 	')
 
